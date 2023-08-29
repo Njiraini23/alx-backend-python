@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
-"""measures total execution time"""
+"""task_wait_n function"""
 import asyncio
-import time
 from typing import List
 
-task_wait_random = __import__('3-tasks').task_wait_random
+task_wait_random = __import__('3-tasks').task_wait_random  # Importing from the previous Python file
 
 
 async def task_wait_n(n: int, max_delay: int) -> List[float]:
-    """measures execution time for wait_n"""
+    """task_wait_random n times"""
     coroutines = [task_wait_random(max_delay) for _ in range(n)]
     delays = await asyncio.gather(*coroutines)
     return delays
