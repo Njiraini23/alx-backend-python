@@ -6,6 +6,7 @@ from typing import List
 
 wait_n = __import__('1-concurrent_coroutines.py').wait_n
 
+
 def measure_time(n: int, max_delay: int) -> float:
     """measures execution time for wait_n"""
     start_time = time.time()
