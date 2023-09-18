@@ -7,21 +7,20 @@ from utils import acccess_nested_map, get_json
 from unittetest.mock import patch, Mock
 
 
-class TestAccessNestedMap(unnittest.TestCase):
-    """TestAccessNestedMap class that inherits"""
+class TestAccessNestedMap(unittest.TestCase):
+    """testing access_nested_map` function"""
     @parameterized.expand([
-        ("a": 1}, ("a"), 1),
+        ({"a": 1}, ("a",), 1),
         ({"a": {"b": 2}}, ("a",), {"b": 2}),
         ({"a": {"b": 2}}, ("a", "b"), 2),
     ])
-
     def test_access_nested_map(
             self,
-            nested_map
-            path:
+            nested_map: Dict,
+            path: Tuple[str],
             expected_result: Union[Dict, int],
             ) -> None:
-        """The tests for access nested map"""
+        """Testing access_nested_map"""
         self.assertEqual(access_nested_map(nested_map, path), expected_result)
 
     @parameterized.expand([
@@ -34,6 +33,6 @@ class TestAccessNestedMap(unnittest.TestCase):
             path: Tuple[str],
             exception_msg: Exception,
             ) -> None:
-        """Tests for all exceptions"""
-        with self.assertRaise(exception_msg):
+        """Testing for exceptions"""
+        with self.assertRaises(exception_msg):
             access_nested_map(nested_map, path)
