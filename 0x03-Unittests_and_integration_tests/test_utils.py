@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Unit test for utils.access_nested_map"""
+"""unit test for  utils.access_nested_map"""
 
-import unnittest
+import unittest
 from typing import Dict, Tuple, Union
 from parameterized import parameterized
-from utils import acccess_nested_map, get_json
-from unittetest.mock import patch, Mock
+from utils import access_nested_map, get_json
+from unittest.mock import patch, Mock
 
 
 class TestAccessNestedMap(unittest.TestCase):
@@ -40,23 +40,23 @@ class TestAccessNestedMap(unittest.TestCase):
 
 
 class TestGetJson(unittest.TestCase):
-    """Get Json class to test utils"""
+    """class implementing the TestGetJson.test_get_json method"""
     @parameterized.expand([
         ("http://example.com", {"payload": True}),
         ("http://holberton.io", {"payload": False}),
         ])
     def test_get_json(self: Any, test_url: str, test_payload: Dict) -> None:
-        """This a test for the json file"""
+        """testing test_get_json"""
         attributes = {'json.return_value': test_payload}
-        with patch("requests.get", return_value=Mock(**attribute)) as req_get:
+        with patch("requests.get", return_value=Mock(**attributes)) as req_get:
             self.assertEqual(get_json(test_url), test_payload)
             req_get.assert_called_once_with(test_url)
 
 
 class TestMemoize(unittest.TestCase):
-    """Test for the memoize function"""
+    """Testing the `memoize` function."""
     def test_memoize(self) -> None:
-        """Testing the memoizing function"""
+        """Tests `memoize`'s function"""
         class TestClass:
             def a_method(self):
                 return 42
